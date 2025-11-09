@@ -1,0 +1,105 @@
+/* ========== Minimal Elegant Admin Page ========== */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* Background and layout */
+body {
+  background: linear-gradient(135deg, #eef2f3 0%, #ffffff 100%);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container box */
+.container {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  transition: 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+}
+
+/* Title */
+.container h1 {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #0078d4;
+  box-shadow: 0 0 5px rgba(0, 120, 212, 0.4);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #0078d4;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #005fa3;
+  transform: translateY(-1px);
+}
+
+/* Message */
+#login-msg {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#login-msg.success {
+  color: #0d8a43;
+}
+
+#login-msg.error {
+  color: #c92c2c;
+}
+
+/* Subtle footer (optional if already in HTML) */
+footer {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
