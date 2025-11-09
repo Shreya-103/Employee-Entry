@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Entry System - QR Scan</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Scan Employee QR Code</h1>
+    <div id="reader" style="width:300px"></div>
+    <p id="scan-result"></p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const qrReader = new Html5Qrcode("reader");
+      const scanResult = document.getElementById("scan-result");
+
+      function onScanSuccess(decodedText) {
+        scanResult.innerText = "Scanned Employee ID: " + decodedText;
+        localStorage.setItem("currentEmployeeId", decodedText);
+        qrReader.stop().then(() => {
+          window.location.href = "employees.html";
+        });
+      }
+      function onScanError(err) {
+        console.warn("Scan error: ", err);
+      }
+
+
+      //start camera scanning
+      Html5Qrcode.getCameras().then(devices => {
+        if(devices && devices.length){
+           qrReader.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250},
+        onScanSuccess,
+        onScanError
+           );
+           const video = document.querySelector("#reader video");
+           if(video) {
+            video.style.transform = "scaleX(-1)";
+           }
+        } else{
+          alert("no camera found");
+        }
+      })
+     
+      .catch(err => {
+        scanResult.innerText = "Camera access error: " + err;
+      });
+    });
+  </script>
+</body>
+</html>
